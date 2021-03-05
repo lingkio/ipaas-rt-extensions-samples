@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "v1",
+  "name": "Invoke API",
+  "description": "Replacement for API Client Connector to handle HTTP 500 response",
+  "extensionId": "io.lingk.extensions:step-invoke-api",
+  "version": "1.0.0",
+  "actions": [
+    {
+      "id": "InvokePost",
+      "name": "Invoke POST",
+      "description": "Invoke a POST endpoint",
+      "descriptor": {
+        "inputDataShape": {
+          "description": "Invoke Post Input",
+          "kind": "json-instance",
+          "name": "Invoke Post Input",
+          "specification": "{\"applicationId\":\"app-id\", \"desiredProgram\":\"program\", \"firstName\":\"first-name\", \"lastName\":\"last-name\"}"
+        },
+        "outputDataShape": {
+          "description": "Invoke Post Output",
+          "kind": "json-instance",
+          "name": "Invoke Post Output",
+          "specification": "{\"status\":\"SUCCESS/FAILURE\", \"id\":\"id\", \"applicationId\":\"app-id\", \"desiredProgram\":\"program\", \"firstName\":\"first-name\", \"lastName\":\"last-name\", \"synced\":\"true/false\"}"
+        },
+        "propertyDefinitionSteps": [
+          {
+            "name": "extension-properties",
+            "properties": {
+              "apiURL": {
+                "componentProperty": false,
+                "deprecated": false,
+                "displayName": "API Endpoint URL",
+                "javaType": "java.lang.String",
+                "kind": "parameter",
+                "raw": false,
+                "required": true,
+                "secret": false,
+                "type": "string",
+                "order": 1
+              }
+            },
+            "description": "extension-properties"
+          }
+        ],
+        "kind": "STEP",
+        "entrypoint": "io.arcadia.extension.action.InvokeApiAction"
+      },
+      "tags": [
+        "body",
+        "extension"
+      ],
+      "actionType": "step"
+    }
+  ],
+  "dependencies": [
+    {
+      "type": "MAVEN",
+      "id": "com.fasterxml.jackson.core:jackson-databind:jar:2.8.6"
+    },
+    {
+      "type": "MAVEN",
+      "id": "io.syndesis.extension:extension-api:jar:1.10.0"
+    },
+    {
+      "type": "MAVEN",
+      "id": "org.apache.httpcomponents:httpclient:jar:4.5.2"
+    }
+  ],
+  "uses": 0,
+  "extensionType": "Steps"
+}
