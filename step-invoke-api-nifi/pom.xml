@@ -8,10 +8,9 @@
     <groupId>io.syndesis.extensions</groupId>
     <artifactId>syndesis-extension-parent</artifactId>
     <version>1.0.0</version>
-    <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <groupId>org.example</groupId>
+  <groupId>io.lingk.syndesis.extensions</groupId>
   <artifactId>step-invoke-nifi-api</artifactId>
   <version>1.0.0</version>
 
